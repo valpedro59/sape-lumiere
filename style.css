@@ -1,7 +1,21 @@
+:root {
+  --primary: #1b7b4b;
+  --secondary: #c81e51;
+  --accent: #e5b80b;
+  --bg-light: #f7f8f6;
+  --text: #1e232a;
+  --overlay: rgba(10, 12, 10, 0.55);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text);
 }
 
 h1,
@@ -13,4 +27,367 @@ h3 {
 body,
 p {
   font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ==========================================================
+   BASE MOBILE (< 680px) — c'est le point de départ, pas un
+   cas particulier. Tout le reste vient s'ajouter par-dessus.
+   ========================================================== */
+
+/* ----- Header ----- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg-light);
+}
+
+header .top-bar {
+  height: 60px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--text);
+  padding: 0 1rem;
+}
+
+header .top-bar h1 {
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* ----- Hero : conteneur ----- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("./images/3.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 12, 10, 0.45) 0%,
+    var(--overlay) 45%,
+    rgba(10, 12, 10, 0.75) 100%
+  );
+}
+
+/* reliure verticale : cachée sur mobile, pas la place */
+.hero-spine {
+  display: none;
+}
+
+/* ----- Hero : bandeau haut (édition / lieu) ----- */
+.hero-top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem 1.25rem 0;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--bg-light);
+  opacity: 0.85;
+}
+
+/* ----- Hero : contenu principal ----- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-family: "Playfair Display", serif;
+  line-height: 1.02;
+  color: var(--bg-light);
+}
+
+.hero-title .line1 {
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.hero-title .amp {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--secondary);
+}
+
+.hero-title .line2 {
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.hero-sub {
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--bg-light);
+  opacity: 0.9;
+}
+
+.hero-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.hero-cta {
+  border: 1.5px solid var(--bg-light);
+  color: var(--text);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  padding: 0.9rem 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.hero-cta--fill {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.hero-cta--outline {
+  background-color: transparent;
+  color: var(--bg-light);
+}
+
+.hero-cta:hover {
+  opacity: 0.85;
+}
+
+/* ----- Hero : compte à rebours ----- */
+.hero-count {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(247, 248, 246, 0.25);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 38px;
+}
+
+.count-num {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--bg-light);
+}
+
+.count-label {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.hero-note {
+  width: 100%;
+  order: 5;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bg-light);
+  opacity: 0.75;
+}
+
+/* ==========================================================
+   TABLETTE (>= 680px)
+   ========================================================== */
+@media (min-width: 680px) {
+  header {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  header .top-bar {
+    height: 70px;
+    padding: 0 1.5rem;
+  }
+
+  header .top-bar h1 {
+    font-size: 1.15rem;
+  }
+
+  .hero-top {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 2rem 0;
+    font-size: 0.68rem;
+  }
+
+  .hero-content {
+    padding: 1.5rem 2rem 3.5rem;
+    gap: 1.6rem;
+  }
+
+  .hero-title .line1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-title .amp {
+    font-size: 1.5rem;
+  }
+
+  .hero-title .line2 {
+    font-size: 4.5rem;
+  }
+
+  .hero-sub {
+    max-width: 440px;
+    font-size: 0.95rem;
+  }
+
+  .hero-btns {
+    flex-direction: row;
+    max-width: none;
+  }
+
+  .hero-cta {
+    flex: 1;
+  }
+
+  .hero-count {
+    padding: 1.1rem 2rem;
+    gap: 1.4rem;
+  }
+
+  .hero-note {
+    width: auto;
+    margin-left: auto;
+    order: 0;
+  }
+}
+
+/* ==========================================================
+   DESKTOP (>= 1024px)
+   ========================================================== */
+@media (min-width: 1024px) {
+  header {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  .hero {
+    flex-direction: row;
+    height: calc(100vh - 70px);
+    min-height: 600px;
+  }
+
+  /* la reliure façon dos de magazine ne revient qu'au format desktop */
+  .hero-spine {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    flex-shrink: 0;
+    width: 46px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    border-right: 1px solid rgba(247, 248, 246, 0.25);
+  }
+
+  .hero-spine .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .hero-top {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.75rem;
+    right: 1.75rem;
+    padding: 0;
+  }
+
+  .hero-content {
+    justify-content: center;
+    padding: 2.5rem 2.5rem 6rem;
+  }
+
+  .hero-title .line1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-title .amp {
+    font-size: 1.9rem;
+  }
+
+  .hero-title .line2 {
+    font-size: 6.5rem;
+  }
+
+  .hero-btns {
+    max-width: 420px;
+  }
+
+  .hero-count {
+    padding: 1.1rem 2.5rem;
+  }
+
+  .count-num {
+    font-size: 1.6rem;
+  }
 }

@@ -14,20 +14,93 @@
         rel="stylesheet">
 
     <!-- Font Awesome (Version 6 stable via CDNJS) -->
-    <link rel="stylesheet" href="https://cloudflare.com"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
-        <h1>Test Display</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, perspiciatis?</p>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <button class="icon-btn" aria-label="Menu">
+                <span><i class="fa-solid fa-bars"></i></span>
+            </button>
+
+            <h1>Sapé &amp; Lumière</h1>
+
+            <button class="icon-btn" aria-label="Panier">
+                <span><i class="fa-solid fa-bag-shopping"></i></span>
+            </button>
+        </div>
+        <!-- Top Bar -->
     </header>
 
+    <!-- main content -->
+    <main>
+        <section class="hero">
+
+            <!-- couche image de fond + voile sombre, séparée du contenu -->
+            <div class="hero-bg" aria-hidden="true"></div>
+
+            <!-- reliure verticale façon dos de magazine -->
+            <div class="hero-spine">
+                <span>Brazzaville</span>
+                <span class="dot"></span>
+                <span>Édition N°04</span>
+                <span class="dot"></span>
+                <span>18—20 Sept</span>
+            </div>
+
+            <div class="hero-content">
+
+                <div class="hero-top">
+                    <span class="hero-edition">Édition 2026 — Trois nuits</span>
+                    <span class="hero-loc">Brazzaville, Congo</span>
+                </div>
+
+                <div class="hero-title">
+                    <span class="line1">Festival</span>
+                    <span class="amp">Sapé &amp;</span>
+                    <span class="line2">Lumière</span>
+                </div>
+
+                <p class="hero-sub">
+                    Élégance sapologique, musique live et installations lumineuses — trois soirs
+                    dans les rues et jardins de Brazzaville.
+                </p>
+
+                <div class="hero-btns">
+                    <a href="#billets" class="hero-cta hero-cta--fill">Réserver un pass</a>
+                    <a href="#programme" class="hero-cta hero-cta--outline">Voir le programme</a>
+                </div>
+            </div>
+
+            <!-- bandeau bas : compte à rebours JS -->
+            <div class="hero-count" id="countdown" data-target="2026-09-18T18:00:00">
+                <div class="count-item">
+                    <span class="count-num" id="cd-days">--</span>
+                    <span class="count-label">Jours</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-num" id="cd-hours">--</span>
+                    <span class="count-label">Heures</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-num" id="cd-min">--</span>
+                    <span class="count-label">Min</span>
+                </div>
+                <div class="count-item">
+                    <span class="count-num" id="cd-sec">--</span>
+                    <span class="count-label">Sec</span>
+                </div>
+                <div class="hero-note">avant l'ouverture — vendredi 18 septembre</div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
