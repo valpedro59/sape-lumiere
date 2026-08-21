@@ -38,3 +38,43 @@ document.addEventListener("DOMContentLoaded", () => {
   tick();
   const interval = setInterval(tick, 1000);
 });
+
+// Navbar
+
+const menuBtn = document.getElementById("menu-burger");
+const navBar = document.querySelector(".navbar");
+
+// Icônes FontAwesome (codes HTML)
+const iconBurger = '<i class="fa-solid fa-bars"></i>';
+const iconClose = '<i class="fa-solid fa-xmark"></i>';
+
+const closeMenu = () => {
+  navBar.classList.remove("show");
+  menuBtn.innerHTML = `<span>${iconBurger}</span>`;
+};
+
+menuBtn.addEventListener("click", (e) => {
+  // Empêche l'événement de se propager au document (évite la fermeture immédiate)
+  e.stopPropagation();
+  const isOpen = navBar.classList.toggle("show");
+
+  menuBtn.innerHTML = `<span>${isOpen ? iconClose : iconBurger}</span>`;
+});
+
+// 2. Fermer si on clique ailleurs dans la page
+document.addEventListener("click", (e) => {
+  // Si la navbar est ouverte ET que le clic n'est ni sur la navbar ni sur le bouton
+  if (
+    navBar.classList.contains("show") &&
+    !navBar.contains(e.target) &&
+    !menuBtn.contains(e.target)
+  ) {
+    closeMenu();
+  }
+});
+
+// 3. Optionnel : Fermer le menu si on clique sur un lien de navigation
+const navLinks = document.querySelectorAll(".nav-link");
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => closeMenu());
+});
