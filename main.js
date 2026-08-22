@@ -78,3 +78,22 @@ const navLinks = document.querySelectorAll(".nav-link");
 navLinks.forEach((link) => {
   link.addEventListener("click", () => closeMenu());
 });
+
+// Programme
+// Cette fonction consiste a afficher l'onglet inactif au clic tout en cachant le precedent ouvert
+
+const tabs = document.querySelectorAll(".tab");
+const tabContents = document.querySelectorAll(".day-panel");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    // 1. Suppression de la classe 'active' partout
+    tabs.forEach((btn) => btn.classList.remove("active"));
+    tabContents.forEach((content) => content.classList.remove("active"));
+    // 2. Ajout de la classe active sur le bouton du click
+    tab.classList.add("active");
+    // 3. Affichage du contenu de l'onglet
+    const targetId = document.getElementById("day-" + tab.dataset.day);
+    targetId.classList.add("active");
+  });
+});
