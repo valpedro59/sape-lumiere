@@ -533,14 +533,6 @@ body.nav-open {
   background-image: url("./images/4.webp");
 }
 
-/* la mosaïque 2-2 ne s'applique QUE quand tous les artistes sont affichés
-   (classe posée par le JS) — sinon elle ne s'adapte pas au nombre réel
-   d'éléments visibles après un filtre et laisse des trous dans la grille */
-.lineup-grid.mosaic #lineup-1,
-.lineup-grid.mosaic #lineup-4 {
-  grid-column: span 2;
-}
-
 /* quand un filtre laisse 1 ou 2 artistes visibles, chacun prend toute
    la largeur de la grille plutôt que de laisser une case vide */
 .lineup-item.solo {
@@ -1147,6 +1139,15 @@ footer {
     height: 400px;
     width: 100%;
   }
+
+  /* la mosaïque 2-2 n'a de sens que sur une grille à 3 colonnes (desktop),
+     et seulement quand tous les artistes sont affichés (classe posée par
+     le JS) — sinon elle ne s'adapte pas au nombre réel d'items visibles
+     après un filtre et laisse des trous dans la grille */
+  .lineup-grid.mosaic #lineup-1,
+  .lineup-grid.mosaic #lineup-4 {
+    grid-column: span 2;
+  }
   /* Pass */
   .pricing-container {
     flex-direction: row; /* Inutile si vous passez en grid, mais à garder en sécurité */
@@ -1227,9 +1228,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    /* max-width: 1180px; */
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 60px 48px;
+    padding: 40px 48px;
   }
   .footer-tagline {
     margin-top: 4px;
