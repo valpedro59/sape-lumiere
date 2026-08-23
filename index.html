@@ -227,7 +227,7 @@
                     <button class="filter-btn" data-cat="music">Musique</button>
                 </div>
 
-                <div class="lineup-grid" id="lineup-grid">
+                <div class="lineup-grid mosaic" id="lineup-grid">
                     <!-- First Line Up Item -->
                     <div class="lineup-item" data-cat="sape" id="lineup-1">
                         <div class="lineup-img"></div>
@@ -278,7 +278,7 @@
                 <div class="pricing-container">
 
                     <!-- Carte Pass 1 Jour -->
-                    <div class="price-card">
+                    <div class="price-card" data-pass="1 jour">
                         <span class="badge-top text-green">ACCÈS JOURNALIER</span>
                         <h2 class="card-title">PASS 1 JOUR</h2>
                         <div class="price">15.000 FCFA</div>
@@ -304,7 +304,7 @@
                     </div>
 
                     <!-- Carte Pass 3 Jours (Expérience Complète) -->
-                    <div class="price-card card-featured">
+                    <div class="price-card card-featured" data-pass="3 jours">
                         <div class="ribbon-badge">EXPÉRIENCE COMPLÈTE</div>
                         <span class="badge-top text-accent">ACCÈS INTÉGRAL</span>
                         <h2 class="card-title">PASS 3 JOURS</h2>
@@ -397,7 +397,7 @@
                     <div class="question-item active" id="q2">
                         <div class="question-text">
                             <h3>Quel est l'experience culinaire qui vous attends ?</h3>
-                            <span class="arrow">+</span>
+                            <span class="arrow">−</span>
                         </div>
                         <div class="answer active">
                             Une selection de plats africains seront disponible pour tous et il y a une bouteille de
@@ -507,16 +507,23 @@
 
     <footer>
         <div class="footer-top">
-            <h1>Festival Sape & Lumiere</h1>
+            <h1>Festival Sapé &amp; Lumière</h1>
+            <p class="footer-tagline">Brazzaville — 18, 19 &amp; 20 septembre 2026</p>
         </div>
-        <div class="footer-link">
-            <a href="#program">Programme</a>
+
+        <nav class="footer-link">
+            <a href="#programme">Programme</a>
             <a href="#pass">Pass</a>
-            <a href="#partner">Partenaire</a>
+            <a href="#partner">Partenaires</a>
             <a href="#line-up">Line-Up</a>
-        </div>
-        <p class="copyright">&copy;2026 Festival Sape & Lumiere | fait par <a target="_blank"
-                href="www.github.com/valpedro59" class="author">Val Pedro</span></a>
+        </nav>
+
+        <hr class="footer-divider">
+
+        <p class="copyright">
+            &copy; 2026 Festival Sapé &amp; Lumière — fait par
+            <a href="https://github.com/valpedro59" target="_blank" rel="noopener" class="author">Val Pedro</a>
+        </p>
     </footer>
 
     <script src="main.js"></script>

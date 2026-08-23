@@ -5,6 +5,7 @@
   --bg-light: #f7f8f6;
   --text: #1e232a;
   --overlay: rgba(10, 12, 10, 0.55);
+  --header-h: 60px;
 }
 
 * {
@@ -80,17 +81,23 @@ header .top-bar h1 {
 /* ----- Navbar ----- */
 .navbar {
   display: none;
-  position: absolute;
-  top: 60px;
+  position: fixed; /* relatif à la fenêtre, pas au document : reste sous le header quel que soit le scroll */
+  top: var(--header-h);
   left: 0;
-  height: calc(100svh - 90px);
+  height: calc(100svh - var(--header-h));
   width: 100%;
-  z-index: 20;
+  z-index: 15; /* sous le header (20) mais au-dessus du contenu des sections */
+  overflow-y: auto;
 
   background-color: var(--bg-light);
 }
 .navbar.show {
   display: block; /* Affiché quand la classe 'show' est présente */
+}
+
+/* empêche le scroll de la page derrière le menu ouvert sur mobile */
+body.nav-open {
+  overflow: hidden;
 }
 
 .nav-list {
@@ -293,6 +300,11 @@ header .top-bar h1 {
   gap: 1rem;
 }
 
+.hero-count.ended {
+  align-items: center;
+  justify-content: center;
+}
+
 .count-item {
   display: flex;
   flex-direction: column;
@@ -323,6 +335,15 @@ header .top-bar h1 {
   letter-spacing: 0.12em;
   color: var(--bg-light);
   opacity: 0.75;
+}
+
+.hero-ended-msg {
+  width: 100%;
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--accent);
 }
 
 /* ----- programme : compte à rebours ----- */
@@ -466,6 +487,7 @@ header .top-bar h1 {
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center; /* cadrage identique quel que soit le nombre d'items visibles */
 }
 .lineup-img::after {
   content: "";
@@ -509,7 +531,20 @@ header .top-bar h1 {
 }
 #lineup-4 .lineup-img {
   background-image: url("./images/4.webp");
-  background-position: center;
+}
+
+/* la mosaïque 2-2 ne s'applique QUE quand tous les artistes sont affichés
+   (classe posée par le JS) — sinon elle ne s'adapte pas au nombre réel
+   d'éléments visibles après un filtre et laisse des trous dans la grille */
+.lineup-grid.mosaic #lineup-1,
+.lineup-grid.mosaic #lineup-4 {
+  grid-column: span 2;
+}
+
+/* quand un filtre laisse 1 ou 2 artistes visibles, chacun prend toute
+   la largeur de la grille plutôt que de laisser une case vide */
+.lineup-item.solo {
+  grid-column: 1 / -1 !important;
 }
 @keyframes fadeIn {
   from {
@@ -837,6 +872,31 @@ section.faq {
   color: #ffffff;
 }
 
+/* Validation du formulaire */
+.field-error {
+  display: block;
+  min-height: 1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: #ff6b6b;
+  margin-top: 2px;
+}
+
+.has-error input,
+.has-error textarea {
+  outline: 2px solid #ff6b6b;
+  outline-offset: -1px;
+}
+
+.form-success {
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  border-top: 1px solid rgba(247, 248, 246, 0.15);
+  padding-top: 15px;
+}
+
 /* Bouton d'envoi */
 .btn-submit {
   background-color: var(--accent);
@@ -858,35 +918,72 @@ section.faq {
 
 /* Footer */
 footer {
-  padding: 60px 16px;
+  padding: 60px 16px 40px;
   background-color: var(--text);
   color: var(--bg-light);
+  border-top: 3px solid var(--accent);
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-footer h1 {
+  align-items: center;
   text-align: center;
+  gap: 24px;
 }
+
+.footer-top h1 {
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-tagline {
+  margin-top: 8px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
 .footer-link {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem 1.8rem;
 }
 .footer-link a {
   color: var(--bg-light);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease;
 }
+.footer-link a:hover {
+  color: var(--accent);
+}
+
+.footer-divider {
+  width: 100%;
+  max-width: 280px;
+  border: none;
+  border-top: 1px solid rgba(247, 248, 246, 0.15);
+}
+
 .copyright {
-  font-size: 0.8rem;
-  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  opacity: 0.75;
 }
 .author {
   font-family: "Playfair Display", serif;
   color: var(--accent);
+  font-weight: 600;
 }
 /* ==========================================================
    TABLETTE (>= 680px)
    ========================================================== */
 @media (min-width: 680px) {
+  :root {
+    --header-h: 70px;
+  }
+
   header .top-bar {
     height: 70px;
     padding: 0 1.5rem;
@@ -1030,7 +1127,7 @@ footer h1 {
   }
 
   .navbar {
-    height: calc(100vh - 70px);
+    height: calc(100vh - var(--header-h));
     width: 50vw;
   }
   .nav-list {
@@ -1044,16 +1141,11 @@ footer h1 {
   /* Line Up */
   .lineup-grid {
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: dense; /* comble automatiquement les trous laissés par un item en span 2 */
   }
   .lineup-item {
     height: 400px;
     width: 100%;
-  }
-  #lineup-1 {
-    grid-column: span 2;
-  }
-  #lineup-4 {
-    grid-column: span 2;
   }
   /* Pass */
   .pricing-container {
@@ -1127,5 +1219,25 @@ footer h1 {
 
   .btn-submit {
     width: auto;
+  }
+
+  /* Footer */
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    /* max-width: 1180px; */
+    margin: 0 auto;
+    padding: 60px 48px;
+  }
+  .footer-tagline {
+    margin-top: 4px;
+  }
+  .footer-divider {
+    display: none;
+  }
+  .copyright {
+    text-align: right;
   }
 }
