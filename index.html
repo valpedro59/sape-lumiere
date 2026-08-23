@@ -49,10 +49,10 @@
                 <a class="nav-link" href="#line-up"><i class="fa-solid fa-music"></i> Line-up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#billeterie"><i class="fa-solid fa-ticket"></i> Billeterie</a>
+                <a class="nav-link" href="#pass"><i class="fa-solid fa-ticket"></i> Billeterie</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#partenaire"><i class="fa-solid fa-handshake"></i> Partenaires</a>
+                <a class="nav-link" href="#partner"><i class="fa-solid fa-handshake"></i> Partenaires</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#faq"><i class="fa-solid fa-circle-question"></i> FaQ</a>
@@ -99,7 +99,7 @@
                 </p>
 
                 <div class="hero-btns">
-                    <a href="#billets" class="hero-cta hero-cta--fill">Réserver un pass</a>
+                    <a href="#pass" class="hero-cta hero-cta--fill">Réserver un pass</a>
                     <a href="#programme" class="hero-cta hero-cta--outline">Voir le programme</a>
                 </div>
             </div>
@@ -219,22 +219,305 @@
                     <h1>Line-<em>Up</em></h1>
                     <span class="sec-num">02 — Artistes</span>
                 </div>
+
                 <div class="filter-btns">
                     <button class="filter-btn active" data-cat="all">Tous</button>
                     <button class="filter-btn" data-cat="sape">Sape & Mode</button>
-                    <button class="filter-btn" data-cat="movie">Theatre</button>
+                    <button class="filter-btn" data-cat="art">Art Lumiere</button>
                     <button class="filter-btn" data-cat="music">Musique</button>
                 </div>
+
                 <div class="lineup-grid" id="lineup-grid">
-                    <div class="lineup-item">
+                    <!-- First Line Up Item -->
+                    <div class="lineup-item" data-cat="sape" id="lineup-1">
                         <div class="lineup-img"></div>
-                        <div class="lineup-cat"></div>
-                        <div class="lineup-name"></div>
+                        <div class="lineup-text">
+                            <div class="lineup-cat">Mode & Sape</div>
+                            <h3 class="lineup-name">Jayson Droll</h3>
+                        </div>
+                    </div>
+                    <!-- Second Line Up Item -->
+                    <div class="lineup-item" data-cat="art" id="lineup-2">
+                        <div class="lineup-img"></div>
+                        <div class="lineup-text">
+                            <div class="lineup-cat">Art Lumiere</div>
+                            <h3 class="lineup-name">Benie Qixing</h3>
+                        </div>
+                    </div>
+                    <!-- Third Line Up Item -->
+                    <div class="lineup-item" data-cat="music" id="lineup-3">
+                        <div class="lineup-img"></div>
+                        <div class="lineup-text">
+                            <div class="lineup-cat">Musique</div>
+                            <h3 class="lineup-name">Sosey</h3>
+                        </div>
+                    </div>
+                    <!-- Fourth Line Up Item -->
+                    <div class="lineup-item" data-cat="sape" id="lineup-4">
+                        <div class="lineup-img"></div>
+                        <div class="lineup-text">
+                            <div class="lineup-cat"> Mode & Sape</div>
+                            <h3 class="lineup-name">Dorcas Kibinda</h3>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Le pass -->
+        <section class="pass" id="pass">
+            <div class="wrap">
+
+                <div class="section-title">
+                    <h1>Le-<em>Pass</em></h1>
+                    <span class="sec-num">03 — Tickets</span>
+                </div>
+
+                <div class="pricing-container">
+
+                    <!-- Carte Pass 1 Jour -->
+                    <div class="price-card">
+                        <span class="badge-top text-green">ACCÈS JOURNALIER</span>
+                        <h2 class="card-title">PASS 1 JOUR</h2>
+                        <div class="price">15.000 FCFA</div>
+
+                        <ul class="features-list">
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-solid fa-check"></i></span>
+                                Entrée aux halls d'exposition principaux
+                            </li>
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-solid fa-check"></i></span>
+                                Accès au défilé du soir
+                            </li>
+                            <li class="not-allowed">
+                                <span class="feature-icon"><i class="fa-solid fa-xmark"></i></span>
+                                Pas d'accès aux salons VIP
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> RÉSERVER VIA WHATSAPP
+                        </a>
+                    </div>
+
+                    <!-- Carte Pass 3 Jours (Expérience Complète) -->
+                    <div class="price-card card-featured">
+                        <div class="ribbon-badge">EXPÉRIENCE COMPLÈTE</div>
+                        <span class="badge-top text-accent">ACCÈS INTÉGRAL</span>
+                        <h2 class="card-title">PASS 3 JOURS</h2>
+                        <div class="price">35.000 FCFA</div>
+
+                        <ul class="features-list grid-list">
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-regular fa-circle-check"></i></span>
+                                Entrée prioritaire à toutes les expositions
+                            </li>
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-regular fa-circle-check"></i></span>
+                                Accès au premier rang du défilé
+                            </li>
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-regular fa-circle-check"></i></span>
+                                Accès aux salons VIP & open bars
+                            </li>
+                            <li class="allowed">
+                                <span class="feature-icon"><i class="fa-regular fa-circle-check"></i></span>
+                                Entrée exclusive aux masterclass Sapeur
+                            </li>
+                            <li class="allowed full-width">
+                                <span class="feature-icon"><i class="fa-regular fa-circle-check"></i></span>
+                                Invitation à l'after-party de clôture privée
+                            </li>
+                        </ul>
+
+                        <a href="#" class="btn-whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i> RÉSERVER VIA WHATSAPP
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Partenaire -->
+        <section class="partner" id="partner">
+            <div class="wrap">
+                <div class="section-title">
+                    <h1>Nos-<em>Partenaires</em></h1>
+                    <span class="sec-num">04 — Partenaires</span>
+                </div>
+                <p class="description">
+                    Decouvrez ceux qui nous soutiennent et nous accompagnent.
+                </p>
+
+                <div class="partner-group">
+                    <div class="partner-item">
+                        <img src="./images/mtn-logo.jpg" class="partner-logo" alt="Mtn-logo">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/snpc-logo.jpeg" class="partner-logo" alt="snpc-logo">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/burotop-logo.png" class="partner-logo" alt="burotop-logo">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/yaocorp-logo.svg" class="partner-logo" alt="yaocorp-logo">
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Faq -->
+        <section class="faq" id="faq">
+            <div class="wrap">
+                <div class="section-title">
+                    <h1>Foire aux-<em>questions</em></h1>
+                    <span class="sec-num">05 — FAQ</span>
+                </div>
+                <div class="top">
+                    <p>Quelques questions que nous avons recus</p>
+                </div>
+                <div class="questions-group">
+                    <!-- Q1 -->
+                    <div class="question-item" id="q1">
+                        <div class="question-text">
+                            <h3>Y'a t'il une restiction d'age pour le formulaire ?</h3>
+                            <span class="arrow">+</span>
+                        </div>
+                        <div class="answer">
+                            Le festival est permis pour les adultes ( +18 ans)
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- Q2 -->
+                    <div class="question-item active" id="q2">
+                        <div class="question-text">
+                            <h3>Quel est l'experience culinaire qui vous attends ?</h3>
+                            <span class="arrow">+</span>
+                        </div>
+                        <div class="answer active">
+                            Une selection de plats africains seront disponible pour tous et il y a une bouteille de
+                            champagne offerte pour les detenteurs du tickets VIP.
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- Q3 -->
+                    <div class="question-item" id="q3">
+                        <div class="question-text">
+                            <h3>Ou puis-je garer ma voiture ?</h3>
+                            <span class="arrow">+</span>
+                        </div>
+                        <div class="answer">
+                            Nous avons un parking a l'entree avec des valets a votre service
+                        </div>
+                        <hr>
+                    </div>
+                    <!-- Q4 -->
+                    <div class="question-item" id="q4">
+                        <div class="question-text">
+                            <h3>Les evenements sont deroulent dans une piece ou en plein air?</h3>
+                            <span class="arrow">+</span>
+                        </div>
+                        <div class="answer">
+                            Selon le programme certaines activities se feront en plein air et d'autre dans un salon
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="wrap">
+                <div class="section-title">
+                    <h1>Nos-<em>Contacts</em></h1>
+                    <span class="sec-num">06 — contact</span>
+                </div>
+                <div class="contact-container">
+                    <!-- Colonne Infos (Gauche) -->
+                    <div class="contact-info">
+                        <h2 class="title">Contacter la Conciergerie</h2>
+                        <p class="description">
+                            Pour les demandes de presse, les opportunités de partenariat ou les réservations de
+                            billetterie sur mesure, veuillez laisser un message. Notre équipe vous répondra avec
+                            discrétion et rapidité.
+                        </p>
+
+                        <div class="info-list">
+                            <div class="info-item">
+                                <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+                                <a href="mailto:concierge@sapelumiere.com">conciergerie@sapelumiere.cg</a>
+                            </div>
+                            <div class="info-item">
+                                <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                                <a href="tel:+242050714271">+242 (05) 071 42 71</a>
+                            </div>
+                            <div class="info-item">
+                                <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <span>Brazzaville , Congo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colonne Formulaire (Droite) -->
+                    <form class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstname">PRÉNOM</label>
+                                <input type="text" id="firstname" placeholder="Entrez votre prénom" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname">NOM</label>
+                                <input type="text" id="lastname" placeholder="Entrez votre nom" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">ADRESSE E-MAIL</label>
+                            <input type="email" id="email" placeholder="Entrez votre adresse e-mail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inquiry">TYPE DE DEMANDE</label>
+                            <select id="inquiry">
+                                <option>Demande générale</option>
+                                <option>Presse</option>
+                                <option>Partenariat</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">MESSAGE</label>
+                            <textarea id="message" rows="5" placeholder="Détaillez votre demande ici..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">ENVOYER LE MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <div class="footer-top">
+            <h1>Festival Sape & Lumiere</h1>
+        </div>
+        <div class="footer-link">
+            <a href="#program">Programme</a>
+            <a href="#pass">Pass</a>
+            <a href="#partner">Partenaire</a>
+            <a href="#line-up">Line-Up</a>
+        </div>
+        <p class="copyright">&copy;2026 Festival Sape & Lumiere | fait par <a target="_blank"
+                href="www.github.com/valpedro59" class="author">Val Pedro</span></a>
+    </footer>
 
     <script src="main.js"></script>
 </body>

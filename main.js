@@ -97,3 +97,53 @@ tabs.forEach((tab) => {
     targetId.classList.add("active");
   });
 });
+
+// FAQ
+
+const faqQuestions = document.querySelectorAll(".question-item");
+
+faqQuestions.forEach((question) => {
+  question.addEventListener("click", () => {
+    // 1. on cheque si l'element cllicke est ouvert
+    const isActive = question.classList.contains("active");
+    // 2. on ferme tous les autres elements
+    faqQuestions.forEach((item) => {
+      item.classList.remove("active");
+      // On cherche la reponse sur l'element click pour la fermer
+      const answer = item.querySelector(".answer");
+      if (answer) answer.classList.remove("active");
+    });
+    if (!isActive) {
+      question.classList.add("active");
+      const answer = question.querySelector(".answer");
+      if (answer) answer.classList.add("active");
+    }
+  });
+});
+
+// Lineup
+const filterButtons = document.querySelectorAll(".filter-btn");
+const lineupItems = document.querySelectorAll(".lineup-item");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // 1. Gérer la classe active sur les boutons
+    filterButtons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // 2. Récupérer le nom de la catégorie cliquée
+    const targetCategory = button.getAttribute("data-cat");
+
+    // 3. Filtrer les artistes
+    lineupItems.forEach((item) => {
+      const itemCategory = item.getAttribute("data-cat");
+
+      // Si le bouton cliqué est "all" OU si la catégorie de l'artiste correspond
+      if (targetCategory === "all" || targetCategory === itemCategory) {
+        item.style.display = "block"; // Affiche l'artiste
+      } else {
+        item.style.display = "none"; // Masque l'artiste
+      }
+    });
+  });
+});

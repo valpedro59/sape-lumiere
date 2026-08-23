@@ -17,6 +17,7 @@ body {
   position: relative;
   background: var(--bg-light);
   color: var(--text);
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -328,6 +329,9 @@ header .top-bar h1 {
 .wrap {
   padding: 100px 16px;
   max-width: 80rem;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   margin: 0 auto;
 }
 .sec-num {
@@ -412,6 +416,7 @@ header .top-bar h1 {
 .schedule-row .what span {
   font-size: 13px;
 }
+
 /* ----- Line Up : Grids ----- */
 .filter-btns {
   width: 100%;
@@ -439,7 +444,445 @@ header .top-bar h1 {
   border-color: var(--bg-light);
   color: var(--bg-light);
 }
+.lineup-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  padding: 10px 0;
+}
+.lineup-item {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s;
+  animation: fadeIn 0.4s ease-in-out;
+}
+.lineup-item:hover {
+  transform: scale(1.03);
+}
 
+.lineup-img {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.lineup-img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.lineup-item:hover .lineup-img::after {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.lineup-text {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lineup-cat {
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+.lineup-name {
+  letter-spacing: 0.2em;
+  color: var(--bg-light);
+}
+#lineup-1 .lineup-img {
+  background-image: url("./images/3.webp");
+}
+#lineup-2 .lineup-img {
+  background-image: url("./images/2.webp");
+}
+#lineup-3 .lineup-img {
+  background-image: url("./images/5.jpg");
+}
+#lineup-4 .lineup-img {
+  background-image: url("./images/4.webp");
+  background-position: center;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----- Pass : Grids ----- */
+.pricing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+/* Base des cartes de prix */
+.price-card {
+  background-color: var(--text);
+  border: 1px solid #2a2f35;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style de la carte vedette (Pass 3 Jours) */
+.price-card.card-featured {
+  max-width: 100%; /* S'élargira sur PC */
+  border-color: #3a3f45;
+}
+
+/* Badges de texte en haut */
+.badge-top {
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.text-green {
+  color: var(--primary);
+}
+.text-accent {
+  color: var(--accent);
+}
+
+/* Badge "Expérience Complète" en haut à droite */
+.ribbon-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--accent);
+  color: #000000;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 8px 15px;
+  letter-spacing: 1px;
+}
+
+/* Titres (Playfair Display) */
+.card-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+}
+
+/* Prix (Playfair Display) */
+.price {
+  font-family: "Playfair Display", serif;
+  font-size: 2.2rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+/* Listes d'avantages */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex-grow: 1; /* Pousse le bouton vers le bas */
+}
+
+.features-list li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.features-list .feature-icon {
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+/* Couleurs des avantages selon l'autorisation */
+.features-list .allowed {
+  color: #e0e0e0;
+}
+
+.features-list .allowed .feature-icon {
+  color: var(--accent);
+}
+
+.features-list .not-allowed {
+  color: #666666;
+  text-decoration: line-through;
+}
+
+.features-list .not-allowed .feature-icon {
+  color: #555555;
+}
+
+/* Boutons WhatsApp */
+.btn-whatsapp {
+  background-color: var(--accent);
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.btn-whatsapp i {
+  font-size: 1.1rem;
+}
+
+.btn-whatsapp:hover {
+  background-color: #ffd427;
+}
+
+/* Partenaire */
+.partner-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding-top: 10px;
+}
+.partner-item {
+  width: 150px;
+  height: 150px;
+  background-color: var(--bg-light);
+  box-shadow: 0 5px 10px rgba(10, 12, 10, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+.partner-logo {
+  width: 100%;
+  height: 100px;
+  object-fit: contain;
+}
+
+/* FAQ */
+section.faq {
+  background-color: var(--text);
+  color: var(--bg-light);
+}
+
+.questions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.question-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  cursor: pointer;
+}
+.question-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  letter-spacing: 1px;
+}
+.arrow {
+  color: var(--accent);
+}
+.question-item:hover .question-text {
+  color: var(--accent);
+}
+.answer {
+  color: var();
+  display: none;
+}
+.answer.active {
+  color: var();
+  display: block;
+}
+.question-item hr {
+  width: 100%;
+  border: 1px solid gray;
+}
+
+/* Contact */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+/* Infos à gauche */
+.contact-info .title {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.contact-info .description {
+  color: #b0b3b8;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.info-item .icon {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.info-item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Formulaire à droite */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background: var(--text);
+  padding: 20px 10px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  background-color: #ffffff;
+  border: none;
+  color: #000000;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Menu déroulant */
+.form-group select {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #555555;
+  color: #ffffff;
+  padding: 15px 0;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group select option {
+  background-color: var(--text);
+  color: #ffffff;
+}
+
+/* Bouton d'envoi */
+.btn-submit {
+  background-color: var(--accent);
+  color: #000000;
+  border: none;
+  padding: 15px 30px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  align-self: flex-start;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #ffd427;
+}
+
+/* Footer */
+footer {
+  padding: 60px 16px;
+  background-color: var(--text);
+  color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+footer h1 {
+  text-align: center;
+}
+.footer-link {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-link a {
+  color: var(--bg-light);
+}
+.copyright {
+  font-size: 0.8rem;
+  text-align: center;
+}
+.author {
+  font-family: "Playfair Display", serif;
+  color: var(--accent);
+}
 /* ==========================================================
    TABLETTE (>= 680px)
    ========================================================== */
@@ -503,6 +946,10 @@ header .top-bar h1 {
     width: auto;
     margin-left: auto;
     order: 0;
+  }
+  /* Partenaire */
+  .partner-group {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -593,5 +1040,92 @@ header .top-bar h1 {
     width: 160px; /* IMPORTANT : Force une largeur fixe identique pour chaque ligne */
     display: flex; /* Permet de contrôler le comportement du lien enfant */
     justify-content: flex-start; /* Aligne le texte du lien au début de sa ligne */
+  }
+  /* Line Up */
+  .lineup-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .lineup-item {
+    height: 400px;
+    width: 100%;
+  }
+  #lineup-1 {
+    grid-column: span 2;
+  }
+  #lineup-4 {
+    grid-column: span 2;
+  }
+  /* Pass */
+  .pricing-container {
+    flex-direction: row; /* Inutile si vous passez en grid, mais à garder en sécurité */
+    display: grid;
+    /* Crée 2 colonnes : la première fixe, la deuxième prend le reste de l'espace */
+    grid-template-columns: 400px 1fr;
+    max-width: 1050px;
+    align-items: end; /* Aligne le BAS des cartes ensemble, ce qui aligne les boutons ! */
+    gap: 0;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    max-width: 400px;
+    /* Supprime le flex-grow pour éviter que la liste pousse artificiellement le bouton */
+    .features-list {
+      flex-grow: 0;
+    }
+  }
+
+  /* Le Pass 3 jours s'adapte à sa colonne */
+  .price-card.card-featured {
+    max-width: 100%;
+    padding: 50px 40px;
+    margin-left: -1px; /* Colle parfaitement les bordures sans superposition excessive */
+    z-index: 2;
+  }
+
+  /* Grille interne pour les avantages du Pass 3 Jours */
+  .grid-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    row-gap: 20px;
+  }
+
+  .grid-list .full-width {
+    grid-column: span 2;
+  }
+
+  /* Force le bouton à prendre toute la largeur de sa carte sur Desktop aussi */
+  .btn-whatsapp {
+    width: 100%;
+    align-self: initial;
+  }
+
+  /* Partenaire */
+  .partner-group {
+    margin: 0 auto;
+  }
+
+  /* contact */
+  .contact-container {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 80px;
+  }
+
+  .contact-info,
+  .contact-form {
+    flex: 1;
+  }
+  .contact-form {
+    padding: 30px;
+  }
+
+  .form-row {
+    flex-direction: row;
+  }
+
+  .btn-submit {
+    width: auto;
   }
 }
