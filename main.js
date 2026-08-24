@@ -14,15 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(n).padStart(2, "0");
   }
 
+  // déclarée en 'let', sans valeur au départ : le tout premier tick() (appelé
+  // en synchrone, avant setInterval) peut arriver alors qu'elle vaut encore
+  // undefined si la date cible est déjà passée au chargement de la page
+  let interval;
+
+  function showEndedMessage() {
+    countdownEl.classList.add("ended");
+    countdownEl.innerHTML =
+      '<p class="hero-ended-msg">Le Festival Sapé &amp; Lumière a commencé — bienvenue !</p>';
+  }
+
   function tick() {
     const now = new Date();
-    const diff = Math.max(0, target - now);
+    const diff = target - now;
 
-    if (diff === 0) {
-      clearInterval(interval);
-      countdownEl.classList.add("ended");
-      countdownEl.innerHTML =
-        '<p class="hero-ended-msg">Le Festival Sapé &amp; Lumière a commencé — bienvenue !</p>';
+    if (diff <= 0) {
+      if (interval) clearInterval(interval); // on ne l'annule que si elle existe déjà
+      showEndedMessage();
       return;
     }
 
@@ -38,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   tick();
-  const interval = setInterval(tick, 1000);
+  interval = setInterval(tick, 1000);
 });
 
 // Navbar
